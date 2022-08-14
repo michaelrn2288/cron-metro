@@ -38,10 +38,26 @@ function timerOn () {
     }, 1000)
 }
 
+function numberWithXDigits (number, minDigits) {
+    const numberLength = (number.toString()).length
+    
+    function CalculateZerosNeeded () {
+        let zeroAccumulator = ''
+        for (let i = 0; i < minDigits - numberLength; i++) {
+            zeroAccumulator = `0${zeroAccumulator}`
+        }
+        return zeroAccumulator
+    }
+    const leftZeros = CalculateZerosNeeded()
+    return `${leftZeros}${number}`
+    }
+
+
 function twoDigitsNumber(number) {
     return number < 10 ? `0${number}` : number
 }
 
 function updateTimeShown() {
-    stopWatch.textContent = `${twoDigitsNumber(hour)}:${twoDigitsNumber(minute)}:${twoDigitsNumber(second)}`
+    stopWatch.textContent = `
+    ${numberWithXDigits(hour, 2)}:${numberWithXDigits(minute, 2)}:${numberWithXDigits(second, 2)}`
 }
