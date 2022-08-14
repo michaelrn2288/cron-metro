@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+
+* {
+  box-sizing: border-box;
+  outline: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open sans', sans-serif;
+  font-size: 1.3em;
+  line-height: 1.5em;
+}
+
+.container {
+  width: 350px;
+  height: 450px;
+  margin: 50px auto;
+  background-image: url(../img/watch.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#stopWatch {
+  font-size: 2.5em;
+  width:fit-content;
+  position: relative;
+  top: 138px;
+  left: 75px;
+}
+
+button {
+  margin: 0 0.3em;
+  font-size: 0.9em;
+  border-radius: 48%;
+  padding: 0.4em;
+  width: 75px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#buttonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  top: 180px;
+}
+
+.paused{
+  color: red;
+}
+
+@media screen and (max-width: 600px) {
+
+  .container {
+    background-size: 70%;
+    margin: 0;
+  }
+
+  #stopWatch {
+    font-size: 1.75em;
+    width:fit-content;
+    position: relative;
+    top: 160px;
+    left: 105px;
+  }
+
+  button {
+    margin: 0 0.21em;
+    font-size: 0.63em;
+    border-radius: 48%;
+    padding: 0.28em;
+    width: 52.5px;
+  }
+}
