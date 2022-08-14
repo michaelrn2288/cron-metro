@@ -3,7 +3,7 @@ const startButton = document.querySelector('#startButton')
 const pauseButton = document.querySelector('#pauseButton')
 const restartButton = document.querySelector('#restartButton')
 
-let [hour, minute, second] = [0, 0, 0]
+let [hour, minute, second, milisecond] = [0, 0, 0, 0]
 let timer
 
 document.addEventListener('click', (event) => {
@@ -18,14 +18,18 @@ document.addEventListener('click', (event) => {
             stopWatch.classList.add('paused');
             break;
         case restartButton:
-            [hour, minute, second] = [0, 0, 0];
+            [hour, minute, second, milisecond] = [0, 0, 0, 0];
     updateTimeShown()
     }
 })
 
 function timerOn () {
     timer = setInterval(() => {
-        second++
+        milisecond = milisecond + 4
+        if (milisecond >=1000) {
+            milisecond = 0
+            second++
+        }
         if (second >=60) {
             second = 0;
             minute++;
@@ -35,7 +39,7 @@ function timerOn () {
             hour++
         }
         updateTimeShown()
-    }, 1000)
+    }, 1)
 }
 
 function numberWithXDigits (number, minDigits) {
@@ -53,11 +57,7 @@ function numberWithXDigits (number, minDigits) {
     }
 
 
-function twoDigitsNumber(number) {
-    return number < 10 ? `0${number}` : number
-}
-
 function updateTimeShown() {
-    stopWatch.textContent = `
-    ${numberWithXDigits(hour, 2)}:${numberWithXDigits(minute, 2)}:${numberWithXDigits(second, 2)}`
+    stopWatch.innerHTML = `
+    ${numberWithXDigits(hour, 2)}:${numberWithXDigits(minute, 2)}:${numberWithXDigits(second, 2)}:<span id="miliseconds">${numberWithXDigits(milisecond, 3)}</span>`
 }
